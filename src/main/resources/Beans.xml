@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="exampleBean" class="t1.ExampleBean">
+        <property name="propertyNull">
+            <null/>
+        </property>
+    </bean>
+
+
+    <bean id="exampleBean2" class="t2.ExampleBean">
+        <property name="propertyNull">
+            <null/>
+        </property>
+        <property name="propertyEmpty" value=""/>
+    </bean>
+
+
+    <bean id="exampleBean3" class="t3.ExampleBean">
+        <property name="propertyNull">
+            <null/>
+        </property>
+        <property name="propertyEmpty" value=""/>
+        <!--        <property name="propertyLiteral" value="&lt;测试&gt;"/>-->
+        <property name="propertyLiteral">
+            <value><![CDATA[<测试>]]></value>
+        </property>
+    </bean>
+
+
+    <bean id="exampleBean4" class="t4.ExampleBean">
+        <property name="propertyNull">
+            <null/>
+        </property>
+        <property name="propertyEmpty" value=""/>
+        <property name="propertyLiteral">
+            <value><![CDATA[<测试>]]></value>
+        </property>
+        <property name="dependBean" ref="dependBean"/>
+        <property name="dependBean.dependProperty" value="赋值"/>
+    </bean>
+
+    <bean id="dependBean" class="t4.DependBean">
+        <property name="dependProperty" value="依赖 Bean 内部赋值"/>
+    </bean>
+</beans>
